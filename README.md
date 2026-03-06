@@ -1,6 +1,6 @@
 <div align="center">
 <a href="github.com/RangS-1/Nein">
-<img src="icon.png" alt="Nein Icon"/>
+<img src="icon.ico" alt="Nein Icon"/>
 </a>
 
 # Nein
