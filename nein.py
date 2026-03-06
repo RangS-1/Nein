@@ -33,14 +33,13 @@ def main(stdscr, filename):
         #Menu
         try:
             stdscr.attron(curses.A_REVERSE)
-            #Tambah MSG 
+            #Tambah MSG, jadi keinget micin coy -_- 
             stdscr.addstr(height-2, 0, msg[:width-1].ljust(width-1))
             
-            # Tips: Gunakan insstr untuk baris terakhir agar tidak error 'addwstr'
-            stdscr.insstr(height-1, 0, "^X Exit | ^S Save".ljust(width-1))
+            stdscr.insstr(height-1, 0, "Ctrl+X Exit | Ctrl+S Save".ljust(width-1))
             stdscr.attroff(curses.A_REVERSE)
         except curses.error:
-            pass # Abaikan jika layar terlalu kecil untuk menggambar menu
+            pass 
 
         # 3. Pindahkan kursor
         stdscr.move(y, x)
@@ -55,9 +54,9 @@ def main(stdscr, filename):
             try:
                 with open(filename, "w") as f:
                     f.write("\n".join(box))
-                msg = f" Saved to {filename}! "
+                msg = f"Saved to {filename}! "
             except Exception as e:
-                msg = f" Error saving: {e} "
+                msg = f"Error saving: {e} "
 
         elif key == curses.KEY_UP: #UP
             if y > 0:
@@ -106,6 +105,13 @@ def main(stdscr, filename):
                 x -= 1
             elif y > 0:
                 y -= 5
+                x = len(box[y])
+
+        elif key == curses.KEY_NPAGE: #P DOWN
+            if x > 0:
+                x += 1
+            elif y > 0:
+                y += 5
                 x = len(box[y])
 
         elif 32 <= key <= 126:
