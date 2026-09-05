@@ -1,56 +1,54 @@
 <div align="center">
 <a href="github.com/RangS-1/Nein">
-<img src="icon.ico" alt="Nein Icon"/>
+<img src="src/nein/icon.ico" alt="Nein Icon"/>
 </a>
 
 # Nein
 
 [![Python](https://img.shields.io/badge/Python-3.x-blue?logo=python&logoColor=white)](https://www.python.org/)
-[![License: GPL](https://img.shields.io/badge/License-GPL-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Windows 8+](https://img.shields.io/badge/Platform-Windows%2010+-red?logo=windows&logoColor=white)](https://github.com/RangS-1/RangSpreter)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Version](https://img.shields.io/badge/Version-1.0-red?logo=windows&logoColor=white)](https://github.com/RangS-1/Nein)
 
 </div>
 
-**Nein** adalah text editor sederhana ala **nano** yang dirancang khusus untuk berjalan di **Windows** menggunakan terminal CMD (aku tak tahu apakah bisa di powershell). Aku yakin kalau kau sebagai developer semisal proyekmu selesai, kau menutup text editor mu lalu menjalankan proyekmu di terminal, tetapi ada yang perlu diubah sedikit dan kau akhirnya kembali membuka text editormu dan kembali menjalankannya di terminal. Pengalaman yang agak menyebalkan sebagai developer -_-.
+**Nein** is a simple text editor inspired by **nano**, designed specifically to run on **Windows** using the CMD terminal (I don't know if it can also run in PowerShell). I believe that as a developer, once your project is finished, you close your text editor and run the project in the terminal, but then you need to make a small change and end up reopening the editor and running it again. It is somewhat frustrating as a developer -_-.
 
-> **Catatan penting**: Proyek ini masih dalam tahap pengembangan awal (**uncompleted**). Banyak fitur yang belum diimplementasikan dan kemungkinan besar masih banyak bug, Silakan kontribusi kalau ingin tambah fitur baru.
+> **Important note**: This project is still in its early development stage (**uncompleted**). Many features have not yet been implemented, and there may still be many bugs. Please contribute if you want to add new features.
 
-## Fitur
+## Features
 
-- Membuka file teks
-- Menampilkan isi file
-- Navigasi dasar menggunakan keyboard
-- Tampilan ala nano (footer sederhana)
+- Open text files
+- Display file contents
+- Basic keyboard navigation
+- Nano-like interface (simple footer)
 
-## Tujuan yang belum selesai
+## Unfinished goals
 
-- Cari teks (`Ctrl+W`)
-- Potong, copy, paste baris
-- Undo sederhana
+- Search text (`Ctrl+W`)
+- Cut, copy, and paste lines
+- Simple undo
 - Syntax highlighting
 
-## Instalasi dan penggunaan 
+## Installation and usage
 
-```
-> git clone https://github.com/RangS-1/Nein.git
-> cd Nein
-> python -m venv venv
-> cd venv/Scripts
-> activate
-> cd ../..
-> pip install -r requirements.txt
-> python nein.py filename.txt
-
-# kau bisa mulai Edit setelah dependencies terinstall
-# disarankan menggunakan venv/virtual environment
+```Python
+git clone https://github.com/RangS-1/Nein.git
+cd Nein
+python -m venv venv
+cd venv/Scripts
+activate
+cd Projects
+pip install -r requirements.txt
+python nein.py filename.txt
 ```
 
-## Kontribusi
 
-Proyek ini sangat terbuka untuk kontribusi, terutama dalam aspek:
-- Penambahan fitur
-- UI yang lebih unik/menarik dibanding Nano
+## Contribution
 
-## Lisensi
+This project is very open to contributions, especially in:
+- Adding new features
+- A more unique/interesting UI than Nano
 
-This project is licensed under the [GPL-3.0](LICENSE) - see the [LICENSE](LICENSE) file for details.
+## License
+
+This project is licensed under the [MIT](LICENSE) - see the [LICENSE](LICENSE) file for details.
