@@ -42,6 +42,18 @@ def goto_left(line, x):
 
     return x
 
+def goto_right(line, x):
+    if not line:
+        return 0
+
+    while x < len(line) - 1 and line[x].isspace():
+        x += 1
+
+    while x < len(line) - 1 and not line[x].isspace():
+        x += 1
+
+    return x
+
 def main(stdscr, filename):
     curses.curs_set(1)
     stdscr.nodelay(False)
@@ -104,6 +116,8 @@ def main(stdscr, filename):
             break
         elif key == 17: # CTRL+Q (Move to Left Word)
             x = goto_left(box[y], x)
+        elif key == 23: # CTRL+W (Move to Right Word)
+            x = goto_right(box[y], x)
         elif key == 19: # CTRL+S (Save)
             try:
                 with open(filename, "w") as f:
