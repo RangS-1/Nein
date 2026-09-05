@@ -1,11 +1,18 @@
 import curses
 import os
 import argparse as arg
+import sys
 from pathlib import Path as ppp
 
-file = arg.ArgumentParser(description="Nein! Simple Terminal Text Editor just like Nano! not Vim cuz i don't know how to exit Vim -_-")
-file.add_argument("filename", type=ppp, default="L.txt")
-filename = file.parse_args().filename
+
+def cli() -> None:
+    parser = arg.ArgumentParser(
+        description="Nein! Simple Terminal Text Editor just like Nano! not Vim cuz i don't know how to exit Vim -_-"
+    )
+    parser.add_argument("filename", type=ppp, nargs="?", default="L.txt")
+    filename = parser.parse_args().filename
+    curses.wrapper(main, filename)
+
 
 def main(stdscr, filename):
     curses.curs_set(1)
@@ -119,4 +126,4 @@ def main(stdscr, filename):
             x += 1
 
 if __name__ == "__main__":
-    curses.wrapper(main, filename)
+    cli()
