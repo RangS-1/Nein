@@ -91,10 +91,9 @@ def main(stdscr, filename):
         #Menu
         try:
             stdscr.attron(curses.A_REVERSE)
-            #Tambah MSG, jadi keinget micin coy -_- 
             stdscr.addstr(height-2, 0, msg[:width-1].ljust(width-1))
             
-            stdscr.insstr(height-1, 0, "Ctrl+X Exit | Ctrl+S Save".ljust(width-1))
+            stdscr.insstr(height-1, 0, "Ctrl+X Exit | Ctrl+S Save | Ctrl+Q Left Word | Ctrl+W Right Word".ljust(width-1))
             stdscr.attroff(curses.A_REVERSE)
         except curses.error:
             pass 
