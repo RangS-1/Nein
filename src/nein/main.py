@@ -20,18 +20,27 @@ def update_scroll(y, x, scroll_y, scroll_x, height, width):
     # Vertical scrolling
     if y < scroll_y:
         scroll_y = y
-
     elif y >= scroll_y + text_height:
         scroll_y = y - text_height + 1
 
     # Horizontal scrolling
     if x < scroll_x:
         scroll_x = x
-
     elif x >= scroll_x + text_width:
         scroll_x = x - text_width + 1
-
     return scroll_y, scroll_x
+
+def goto_left(line, x):
+    if not line:
+        return 0
+
+    while x > 0 and line[x - 1].isspace():
+        x -= 1
+
+    while x > 0 and not line[x - 1].isspace():
+        x -= 1
+
+    return x
 
 def main(stdscr, filename):
     curses.curs_set(1)
@@ -60,7 +69,6 @@ def main(stdscr, filename):
                 break
             
             line = box[file_y]
-
             visible_line = line[scroll_x:scroll_x + width - 1]
 
             try:
@@ -94,6 +102,8 @@ def main(stdscr, filename):
         key = stdscr.getch()
         if key == 24: # CTRL+X (Exit)
             break
+        elif key == 17: # CTRL+Q (Move to Left Word)
+            x = goto_left(box[y], x)
         elif key == 19: # CTRL+S (Save)
             try:
                 with open(filename, "w") as f:
