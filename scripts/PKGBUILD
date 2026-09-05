@@ -9,7 +9,6 @@ license=('MIT')
 
 depends=(
     'python'
-    'ncurses'
 )
 
 makedepends=(
