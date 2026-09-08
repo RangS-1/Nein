@@ -9,6 +9,14 @@ def cli() -> None:
         description="Nein! Simple Terminal Text Editor just like Nano! not Vim cuz i don't know how to exit Vim -_-"
     )
     parser.add_argument("filename", type=ppp, nargs="?", default="L.txt")
+    parser.add_argument("Ctrl+S", type=str, nargs="?", help="Save the file", default="L.txt")
+    parser.add_argument("Ctrl+X", type=str, nargs="?", help="Exit the editor", default="L.txt")
+    parser.add_argument("Ctrl+Q", type=str, nargs="?", help="Move to left word", default="L.txt")
+    parser.add_argument("Ctrl+W", type=str, nargs="?", help="Move to right word", default="L.txt")
+    parser.add_argument("Ctrl+B", type=str, nargs="?", help="Copy selected text", default="L.txt")
+    parser.add_argument("Ctrl+F", type=str, nargs="?", help="Cut selected text", default="L.txt")
+    parser.add_argument("Ctrl+V", type=str, nargs="?", help="Paste selected text", default="L.txt")
+
     filename = parser.parse_args().filename
     curses.wrapper(main, filename)
 
@@ -122,7 +130,7 @@ def main(stdscr, filename):
             stdscr.attron(curses.A_REVERSE)
             stdscr.addstr(height-2, 0, msg[:width-1].ljust(width-1))
             
-            stdscr.insstr(height-1, 0, "Ctrl+X Exit | Ctrl+S Save | Ctrl+Q Left Word | Ctrl+W Right Word".ljust(width-1))
+            stdscr.insstr(height-1, 0, "^X Exit | ^S Save | ^Q Left Word | ^W Right Word | ^B Copy | ^F Cut | ^V Paste".ljust(width-1))
             stdscr.attroff(curses.A_REVERSE)
         except curses.error:
             pass 
