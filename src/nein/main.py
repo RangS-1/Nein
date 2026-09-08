@@ -4,7 +4,6 @@ import argparse as arg
 import sys
 from pathlib import Path as ppp
 
-
 def cli() -> None:
     parser = arg.ArgumentParser(
         description="Nein! Simple Terminal Text Editor just like Nano! not Vim cuz i don't know how to exit Vim -_-"
@@ -64,12 +63,27 @@ def ctrl_backspace(line, x):
 
     return new_line, new_x
 
+clipboard = ""
+
 def copy(line):
     if not line:
         return ""
     return line
 
+def cut(line):
+    if not line:
+        return "", 0
+    return "", 0
+
+def paste(line, x, clipboard):
+    if not line:
+        return clipboard, len(clipboard)
+    new_line = line[:x] + clipboard + line[x:]
+    new_x = x + len(clipboard)
+    return new_line, new_x
+
 def main(stdscr, filename):
+    global clipboard
     curses.curs_set(1)
     stdscr.nodelay(False)
     scroll_y, scroll_x = 0, 0
@@ -134,8 +148,13 @@ def main(stdscr, filename):
             x = goto_right(box[y], x)
         elif key == 4: # CTRL+D (Backspace)
             box[y], x = ctrl_backspace(box[y], x)
-        elif key == 1: # CTRL+A (Block All)
-            copy(box[y])
+        elif key == 22: # CTRL+V (Paste)
+            box[y], x = paste(box[y], x, clipboard)
+        elif key == 2: # CTRL+B (Copy)
+            clipboard = copy(box[y])
+        elif key == 6: # CTRL+F (Cut)
+            clipboard = copy(box[y])
+            box[y], x = cut(box[y])
         elif key == 19: # CTRL+S (Save)
             try:
                 with open(filename, "w") as f:
