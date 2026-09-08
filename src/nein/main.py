@@ -54,6 +54,16 @@ def goto_right(line, x):
 
     return x
 
+def ctrl_backspace(line, x):
+    if not line or x == 0:
+        return line, x
+
+    start = goto_left(line, x)
+    new_line = line[:start] + line[x:]
+    new_x = start
+
+    return new_line, new_x
+
 def main(stdscr, filename):
     curses.curs_set(1)
     stdscr.nodelay(False)
@@ -117,6 +127,8 @@ def main(stdscr, filename):
             x = goto_left(box[y], x)
         elif key == 23: # CTRL+W (Move to Right Word)
             x = goto_right(box[y], x)
+        elif key == 4: # CTRL+D (Backspace)
+            box[y], x = ctrl_backspace(box[y], x)
         elif key == 19: # CTRL+S (Save)
             try:
                 with open(filename, "w") as f:
